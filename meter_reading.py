@@ -123,6 +123,8 @@ template_index = [[1,2,44,45],
                   [27],
                   [46,47,48]]
 
+f = open('output.txt', 'w')
+
 def get_match_rect(template, img, method):
     #获取模板匹配的矩形的左上角和右下角的坐标
     w, h = template.shape[1], template.shape[0]
@@ -210,15 +212,15 @@ def get_red_pointer_angle(img, template_type):
 #展示图片刻度值
 def display_result(result):
     length = len(result)
-    print("---------------------------------------")
+    print("---------------------------------------", file = f)
     for i in range(length):
         if type(result[i]) == tuple:
             #print(i)
             #print(result[i])
-            print("{}、red:{:.2f},black:{:.2f}".format((i+1), result[i][0], result[i][1]))
+            print("{}、red:{:.2f},black:{:.2f}".format((i+1), result[i][0], result[i][1]), file = f)
         else:
-            print("{}、{:.2f}".format((i+1), result[i]))
-    print("---------------------------------------")
+            print("{}、{:.2f}".format((i+1), result[i]), file = f)
+    print("---------------------------------------", file = f)
 
 #在原图中画出指针位置，对于一红一黑指针情况，白线代表红指针，绿线代表黑指针
 def draw_line(img, template_type, index, angle):
@@ -307,4 +309,5 @@ if __name__ == '__main__':
             meter_reading_result[j-1] = get_pointer_meter_value(angle, i)
         
     display_result(meter_reading_result)
+    f.close()
 #cv2.destroyAllWindows()
