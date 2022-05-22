@@ -6,6 +6,8 @@ A traditional way to solve pointer meter reading
 对58张测试图片指针的标注，在一红一黑双指针图片中，白色线表示红指针，绿色线表示黑指针
 ## meter_reading.py
 采用模板匹配 + 直线拟合 + 表盘读数的方法读取仪表中指针所指刻度
+## output.txt
+各仪表图片识别结果
 
 ## 提升准确率可采用的方法
 
